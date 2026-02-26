@@ -29,7 +29,7 @@ class AuthController
         $csrfToken = bin2hex(random_bytes(32));
         Session::set('csrf_token', $csrfToken);
 
-        View::render('auth/login', ['csrfToken' => $csrfToken], false);
+        View::render('auth/login', ['csrf_token' => $csrfToken], false);
     }
 
     /**
