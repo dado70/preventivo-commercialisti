@@ -1,0 +1,29 @@
+{
+    "name": "ascapuzzi/preventivo-commercialisti",
+    "description": "Gestione preventivi per studi commercialistici - basato sugli onorari ANC",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Alessandro Scapuzzi",
+            "email": "dado70@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "mpdf/mpdf": "^8.2",
+        "phpoffice/phpspreadsheet": "^2.1",
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

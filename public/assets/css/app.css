@@ -1,0 +1,51 @@
+/* Preventivo Commercialisti - Stili personalizzati */
+
+:root {
+    --pc-primary: #0d6efd;
+    --pc-sidebar-bg: #1a2035;
+}
+
+body { font-size: 0.92rem; }
+
+.navbar-brand { font-size: 1.1rem; letter-spacing: 0.02em; }
+
+.table th { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.04em; color: #6c757d; }
+
+.card { border: 1px solid #dee2e6; }
+.card-header { background: #f8f9fa; font-weight: 600; }
+
+/* Preventivo builder */
+#voce-lista .voce-row { background: #fff; border: 1px solid #dee2e6; border-radius: 6px; padding: 10px 14px; margin-bottom: 6px; }
+#voce-lista .voce-row:hover { border-color: #0d6efd44; }
+
+.badge-stato-bozza      { background-color: #6c757d; }
+.badge-stato-inviato    { background-color: #0dcaf0; color: #000; }
+.badge-stato-accettato  { background-color: #198754; }
+.badge-stato-rifiutato  { background-color: #dc3545; }
+.badge-stato-scaduto    { background-color: #fd7e14; }
+
+.importo-display { font-size: 1.1rem; font-weight: 600; color: #0d6efd; }
+
+/* Sezione tariffe */
+.sezione-header { background: #e9ecef; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 6px 12px; border-radius: 4px; }
+
+.stat-card { border-left: 4px solid var(--pc-primary); }
+.stat-card.success { border-left-color: #198754; }
+.stat-card.warning { border-left-color: #ffc107; }
+.stat-card.danger  { border-left-color: #dc3545; }
+
+/* Tooltip tariffe nella voce preventivo */
+.tariffa-selector .list-group-item { cursor: pointer; font-size: 0.87rem; }
+.tariffa-selector .list-group-item:hover { background: #e7f0ff; }
+.tariffa-selector .list-group-item .badge { font-size: 0.75rem; }
+
+@media (max-width: 768px) {
+    .table-responsive-stack td { display: flex; justify-content: space-between; }
+    .table-responsive-stack td::before { content: attr(data-label); font-weight: 600; margin-right: 10px; }
+}
+
+/* Print */
+@media print {
+    nav, footer, .no-print { display: none !important; }
+    body { background: #fff; }
+}

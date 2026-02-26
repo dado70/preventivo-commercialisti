@@ -1,0 +1,36 @@
+# Dipendenze
+/vendor/
+
+# Configurazione locale (contiene password)
+# config/config.php è versionato con valori placeholder - NON fare commit di versioni con password reali
+
+# Log
+/logs/*.log
+/logs/*.txt
+
+# Upload
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Cache mPDF e SpreadSheet
+/vendor/mpdf/mpdf/tmp/
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# PHP
+*.phar
+
+# Env
+.env
+.env.local

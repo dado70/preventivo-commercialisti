@@ -1,0 +1,13 @@
+Options -Indexes
+RewriteEngine On
+
+# Blocca accesso a file sensibili
+<FilesMatch "\.(env|log|sql|sh|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Rewrite tutto a index.php tranne assets esistenti
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
