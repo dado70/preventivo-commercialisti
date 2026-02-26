@@ -1,0 +1,44 @@
+Options -Indexes
+
+# ── Blocca accesso diretto a cartelle sensibili ─────────────────────────────
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Blocca accesso a src/, config/, vendor/, database/, logs/, templates/
+    RewriteRule ^(src|config|vendor|database|logs|templates)(/|$) - [F,L]
+
+    # Blocca file sensibili nella root
+    RewriteRule ^(composer\.(json|lock)|README\.md|LICENSE)$ - [F,L]
+
+    # Permetti installer.php solo se esiste (si auto-elimina dopo l'uso)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^installer\.php$ - [L]
+
+    # Permetti assets, uploads e file esistenti
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Tutto il resto → index.php
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# ── Protezione file sensibili ───────────────────────────────────────────────
+<FilesMatch "\.(env|log|sql|sh|md|lock|json)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Eccezione: lascia passare manifest.json se presente
+<FilesMatch "^manifest\.json$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# ── Performance e sicurezza ─────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
