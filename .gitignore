@@ -31,6 +31,9 @@ desktop.ini
 # PHP
 *.phar
 
+# Export conversazioni Claude
+*.txt
+
 # Env
 .env
 .env.local
